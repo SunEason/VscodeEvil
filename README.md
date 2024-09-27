@@ -54,14 +54,13 @@
 
 ## Suggested Custom Keybindings
 
-```json
-    // keyboard shortcuts json
-	{ "key": "alt+[", "command": "workbench.action.toggleSidebarVisibility" },
-	{ "key": "alt+]", "command": "workbench.action.toggleAuxiliaryBar" },
-	{ "key": "ctrl+c ctrl+c", "command": "evil.focusOnEditor", "when": "!terminalFocus" },
-	{ "key": "ctrl+c ctrl+f", "command": "workbench.action.quickTextSearch" , "when": "!terminalFocus"},
-	{ "key": "ctrl+c ctrl+s", "command": "workbench.action.gotoSymbol" , "when": "!terminalFocus"},
-	{ "key": "ctrl+c ctrl+v", "command": "workbench.action.openView" , "when": "!terminalFocus"}
+```jsonc
+  // keyboard shortcuts json
+  { "key": "ctrl+p", "command": "editor.action.marker.prev", "when": "editorTextFocus && vim.active && vim.mode == 'Normal'" },
+  { "key": "ctrl+n", "command": "editor.action.marker.next", "when": "editorTextFocus && vim.active && vim.mode == 'Normal'" },
+  { "key": "ctrl+c ctrl+f", "command": "workbench.action.quickTextSearch", "when": "editorFocus" },
+  { "key": "ctrl+c ctrl+v", "command": "workbench.action.openView", "when": "editorFocus" },
+  { "key": "ctrl+c ctrl+s", "command": "workbench.action.gotoSymbol", "when": "editorFocus" },
 ```
 
 ### explorer keybindings
