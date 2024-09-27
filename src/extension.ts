@@ -1,26 +1,34 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+"use strict";
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+import * as vscode from "vscode";
+import * as region from "./emacs-region";
+import * as vim from "./vim";
+import * as emacs from "./emacs";
+
 export function activate(context: vscode.ExtensionContext) {
+  region.activate(context);
+  emacs.activate(context);
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "vscodeevil" is now active!');
+  context.subscriptions.push(
+    vscode.commands.registerCommand("evil.focusOnEditor", () => {
+      // The code you place here will be executed every time your command is executed
+      // Display a message box to the user
+      // vscode.window.showInformationMessage('Hello World from evil-mode!');
+      vscode.commands.executeCommand("workbench.action.closePanel");
+      vscode.commands.executeCommand("workbench.action.closeSidebar");
+      vscode.commands.executeCommand("workbench.action.closeAuxiliaryBar");
+    })
+  );
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('vscodeevil.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from VscodeEvil!');
-	});
-
-	context.subscriptions.push(disposable);
+  context.subscriptions.push(
+    vscode.commands.registerCommand("evil.killAllRight", async () => {
+      await vscode.commands.executeCommand("cursorEndSelect");
+      await vscode.commands.executeCommand("editor.action.clipboardCutAction");
+    })
+  );
 }
 
-// This method is called when your extension is deactivated
-export function deactivate() {}
+// this method is called when your extension is deactivated
+export function deactivate() {
+  region.deactivate();
+}

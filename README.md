@@ -1,71 +1,112 @@
-# vscodeevil README
+# evil-mode README
 
-This is the README for your extension "vscodeevil". After writing up a brief description, we recommend including the following sections.
+<h2 align="center"><img src="https://raw.githubusercontent.com/migrs/vscode-vimacs/master/images/icon.png" height="128"><br>VSCode Vimacs</h2>
+<p align="center"><strong>Emacs keybindings for VSCodeVim</strong></p>
 
-## Features
+## Concepts
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- a fork of https://github.com/migrs/vscode-vimacs
+- Mainly using [VSCodeVim](https://github.com/VSCodeVim/Vim), you can also use Emacs like key bindings in Vim insert mode
+- Supports Emacs region select key bindings
 
-For example if there is an image subfolder under your extension project workspace:
+## Related extensions
 
-\!\[feature X\]\(images/feature-x.png\)
+- [VSCodeVim](https://github.com/VSCodeVim/Vim) (**Required**) - Vim emulation for Visual Studio Code
+- [vscode-emacs-region](https://github.com/ayrtonmassey/vscode-emacs-region) - provides region selection similar to that of Emacs
+- [DDCODE](https://github.com/dotDeeka/ddcode) - provides some Emacs commands
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### Emacs keybindings
 
-## Requirements
+| key            | command                                 |
+| -------------- | --------------------------------------- |
+| alt+w          | `editor.action.clipboardCopyAction`     |
+| ctrl+w         | `editor.action.clipboardCutAction`      |
+| ctrl+y         | `editor.action.clipboardPasteAction`    |
+| ctrl+s         | `editor.action.nextMatchFindAction`     |
+| ctrl+r         | `editor.action.previousMatchFindAction` |
+| ctrl+f         | `cursorRight`                           |
+| ctrl+b         | `cursorLeft`                            |
+| ctrl+p         | `cursorUp`                              |
+| ctrl+n         | `cursorDown`                            |
+| alt+f          | `cursorWordRight`                       |
+| alt+b          | `cursorWordLeft`                        |
+| ctrl+a         | `cursorHome`                            |
+| ctrl+e         | `cursorEnd`                             |
+| ctrl+d         | `deleteRight`                           |
+| ctrl+h         | `deleteLeft`                            |
+| alt+d          | `deleteWordRight`                       |
+| alt+h          | `deleteWordLeft`                        |
+| **ctrl+space** | `emacs.startRegionMode`                 |
+| **ctrl+g**     | `emacs.exitRegionMode`                  |
+| **ctrl+k**     | `emacs.cutAllRight`                     |
+| **ctrl+l**     | `emacs.scrollLineToCenter`              |
+| **C-x b**      | `Switch to another open buffer`         |
+| **C-x C-f**    | `QuickOpen a file`                      |
+| **C-x k**      | `Close current tab (buffer)`            |
+| **C-x C-k**    | `Close all tabs`                        |
+| **C-x C-s**    | `Save`                                  |
+| **C-x C-w**    | `Save as`                               |
+| **C-x z**      | `zen mode`                              |
+| **C-x r**      | `recent project`                        |
+| **C-M-n**      | `Add selection to next find match`      |
+| **M-x**        | `Open command palette`                  |
+| **M-z**        | `Close all side bar and panel`          |
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## Suggested Custom Keybindings
 
-## Extension Settings
+```json
+    // keyboard shortcuts json
+	{ "key": "alt+[", "command": "workbench.action.toggleSidebarVisibility" },
+	{ "key": "alt+]", "command": "workbench.action.toggleAuxiliaryBar" },
+	{ "key": "ctrl+c ctrl+c", "command": "evil.focusOnEditor", "when": "!terminalFocus" },
+	{ "key": "ctrl+c ctrl+f", "command": "workbench.action.quickTextSearch" , "when": "!terminalFocus"},
+	{ "key": "ctrl+c ctrl+s", "command": "workbench.action.gotoSymbol" , "when": "!terminalFocus"},
+	{ "key": "ctrl+c ctrl+v", "command": "workbench.action.openView" , "when": "!terminalFocus"}
+```
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### explorer keybindings
 
-For example:
+| key     | command       |
+| ------- | ------------- |
+| a       | `new file`    |
+| shift+a | `new folder`  |
+| shift+r | `rename file` |
+| shift+d | `delete file` |
+| shift+c | `copy`        |
+| shift+x | `cut`         |
 
-This extension contributes the following settings:
+## My settings.json
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+```json
+    "vim.overrideCopy": true,
+    "vim.hlsearch": true,
+    "vim.useSystemClipboard": false,
+    "vim.visualstar": true,
+    "vim.cursorStylePerMode.normal" : "block",
+    "vim.cursorStylePerMode.insert": "line-thin",
+    "vim.cursorStylePerMode.replace": "block-outline",
+    "vim.statusBarColorControl": true,
+```
 
-## Known Issues
+## Compatibility With Other Extensions
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+It is possible to combine this extension with other cursor movement extensions.
 
-## Release Notes
+You can use the `inRegionMode` context flag in the `when` clause of your `keybindings.json` to provide different behaviours for region mode and cursor mode. The default key bindings are laid out as follows:
 
-Users appreciate release notes as you update your extension.
+```json
+{
+    "key": "DESIRED KEY",
+    "command": "CURSOR MOVE COMMAND",
+    "when": "editorTextFocus && !inRegionMode"
+},
+{
+    "key": "DESIRED KEY",
+    "command": "CURSOR MOVE & SELECT COMMAND",
+    "when": "editorTextFocus && inRegionMode"
+}
+```
 
-### 1.0.0
+## License
 
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+MIT
