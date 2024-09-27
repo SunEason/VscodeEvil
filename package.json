@@ -1,7 +1,7 @@
 {
-  "name": "vscodeevil",
-  "displayName": "VscodeEvil",
-  "description": "vscodeevil",
+  "name": "vscode-evil",
+  "displayName": "VimEvil",
+  "description": "emacs evil mode like keybindings rely on VscodeVim extension",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.93.0"
