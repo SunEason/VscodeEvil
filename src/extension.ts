@@ -19,13 +19,6 @@ export function activate(context: vscode.ExtensionContext) {
       vscode.commands.executeCommand("workbench.action.closeAuxiliaryBar");
     })
   );
-
-  context.subscriptions.push(
-    vscode.commands.registerCommand("evil.killAllRight", async () => {
-      await vscode.commands.executeCommand("cursorEndSelect");
-      await vscode.commands.executeCommand("editor.action.clipboardCutAction");
-    })
-  );
 }
 
 // this method is called when your extension is deactivated
