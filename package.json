@@ -132,6 +132,9 @@
       { "key": "alt+- alt+u", "command": "editor.action.transformToUppercase" },
       { "key": "alt+- alt+l", "command": "editor.action.transformToLowercase" },
       { "key": "alt+- alt+c", "command": "editor.action.transformToTitlecase" },
+      { "key": "alt+u", "command": "evil.alt-u" },
+      { "key": "alt+l", "command": "evil.alt-l" },
+      { "key": "alt+c", "command": "evil.alt-c" },
 
       { "key": "a", "command": "explorer.newFile", "when": "filesExplorerFocus && !inputFocus" },
       { "key": "shift+a", "command": "explorer.newFolder", "when": "filesExplorerFocus && !inputFocus" },
