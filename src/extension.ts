@@ -18,23 +18,29 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("evil.alt-u", () => {
-      vscode.commands.executeCommand("cursorWordRight");
-      vscode.commands.executeCommand("editor.action.transformToUppercase");
+    vscode.commands.registerCommand("evil.alt-u", async () => {
+      await vscode.commands.executeCommand("cursorWordRight");
+      await vscode.commands.executeCommand(
+        "editor.action.transformToUppercase"
+      );
     })
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("evil.alt-l", () => {
-      vscode.commands.executeCommand("cursorWordRight");
-      vscode.commands.executeCommand("editor.action.transformToLowercase");
+    vscode.commands.registerCommand("evil.alt-l", async () => {
+      await vscode.commands.executeCommand("cursorWordRight");
+      await vscode.commands.executeCommand(
+        "editor.action.transformToLowercase"
+      );
     })
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand("evil.alt-c", () => {
-      vscode.commands.executeCommand("cursorWordRight");
-      vscode.commands.executeCommand("editor.action.transformToTitlecase");
+    vscode.commands.registerCommand("evil.alt-c", async () => {
+      await vscode.commands.executeCommand("cursorWordRight");
+      await vscode.commands.executeCommand(
+        "editor.action.transformToTitlecase"
+      );
     })
   );
 }
