@@ -144,7 +144,13 @@
       { "key": "y y", "command": "filesExplorer.copy", "when": "filesExplorerFocus && !inputFocus" },
       { "key": "shift+d", "command": "deleteFile", "when": "filesExplorerFocus && !inputFocus" },
       { "key": "shift+a", "command": "explorer.newFolder", "when": "filesExplorerFocus && !inputFocus" },
-      { "key": "shift+r", "command": "renameFile", "when": "filesExplorerFocus && !inputFocus" }
+      { "key": "shift+r", "command": "renameFile", "when": "filesExplorerFocus && !inputFocus" },
+
+      { "key": "ctrl+p", "command": "editor.action.marker.prev", "when": "editorTextFocus && vim.active && vim.mode == 'Normal'" },
+      { "key": "ctrl+n", "command": "editor.action.marker.next", "when": "editorTextFocus && vim.active && vim.mode == 'Normal'" },
+      { "key": "ctrl+c ctrl+v", "command": "workbench.action.openView", "when": "!terminalFocus"},
+      { "key": "ctrl+c ctrl+f", "command": "workbench.action.quickTextSearch", "when": "editorFocus" },
+      { "key": "ctrl+c ctrl+s", "command": "workbench.action.gotoSymbol", "when": "editorFocus" }
     ]
   },
   "scripts": {
