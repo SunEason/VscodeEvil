@@ -137,13 +137,14 @@
       { "key": "alt+l", "command": "evil.alt-l" },
       { "key": "alt+c", "command": "evil.alt-c" },
 
-      { "key": "a", "command": "explorer.newFile", "when": "filesExplorerFocus && !inputFocus" },
       { "key": "/", "command": "list.find", "when": "listFocus && listSupportsFind && !inputFocus" },
-      { "key": "shift+a", "command": "explorer.newFolder", "when": "filesExplorerFocus && !inputFocus" },
-      { "key": "shift+r", "command": "renameFile", "when": "filesExplorerFocus && !inputFocus" },
+      { "key": "a", "command": "explorer.newFile", "when": "filesExplorerFocus && !inputFocus" },
+      { "key": "p", "command": "filesExplorer.paste", "when": "filesExplorerFocus && !inputFocus" },
+      { "key": "d d", "command": "filesExplorer.cut", "when": "filesExplorerFocus && !inputFocus" },
+      { "key": "y y", "command": "filesExplorer.copy", "when": "filesExplorerFocus && !inputFocus" },
       { "key": "shift+d", "command": "deleteFile", "when": "filesExplorerFocus && !inputFocus" },
-      { "key": "shift+x", "command": "filesExplorer.cut", "when": "filesExplorerFocus && !inputFocus" },
-      { "key": "shift+c", "command": "filesExplorer.copy", "when": "filesExplorerFocus && !inputFocus" }
+      { "key": "shift+a", "command": "explorer.newFolder", "when": "filesExplorerFocus && !inputFocus" },
+      { "key": "shift+r", "command": "renameFile", "when": "filesExplorerFocus && !inputFocus" }
     ]
   },
   "scripts": {
