@@ -1,12 +1,11 @@
 "use strict";
 
 import * as vscode from "vscode";
-import * as region from "./emacs-region";
 import * as vim from "./vim";
-import * as emacs from "./emacs";
+import { Emacs } from "./emacs";
 
 export function activate(context: vscode.ExtensionContext) {
-  region.activate(context);
+  const emacs = new Emacs();
   emacs.activate(context);
 
   context.subscriptions.push(
@@ -46,6 +45,4 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {
-  region.deactivate();
-}
+export function deactivate() {}
