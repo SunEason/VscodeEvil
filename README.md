@@ -56,8 +56,8 @@
 
 ```jsonc
   // keyboard shortcuts json
-  { "key": "ctrl+p", "command": "editor.action.marker.prev", "when": "editorTextFocus && vim.active && vim.mode == 'Normal'" },
-  { "key": "ctrl+n", "command": "editor.action.marker.next", "when": "editorTextFocus && vim.active && vim.mode == 'Normal'" },
+  { "key": "ctrl+p", "command": "editor.action.marker.prev", "when": "editorTextFocus && vim.active && vim.mode != 'Insert'" },
+  { "key": "ctrl+n", "command": "editor.action.marker.next", "when": "editorTextFocus && vim.active && vim.mode != 'Insert'" },
   { "key": "ctrl+c ctrl+f", "command": "workbench.action.quickTextSearch", "when": "editorFocus" },
   { "key": "ctrl+c ctrl+v", "command": "workbench.action.openView", "when": "editorFocus" },
   { "key": "ctrl+c ctrl+s", "command": "workbench.action.gotoSymbol", "when": "editorFocus" },

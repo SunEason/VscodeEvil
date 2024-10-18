@@ -9,14 +9,25 @@ export class Emacs {
     await vscode.commands.executeCommand("editor.action.clipboardCutAction");
   }
 
-  scrollLineToCenter() {
-    const editor = vscode.window.activeTextEditor;
-    if (!editor) {
-      return;
-    }
-    const selection = editor.selection;
-    const range = new vscode.Range(selection.start, selection.end);
-    editor.revealRange(range, vscode.TextEditorRevealType.InCenter);
+  focusEditor() {
+    vscode.commands.executeCommand("workbench.action.closePanel");
+    vscode.commands.executeCommand("workbench.action.closeSidebar");
+    vscode.commands.executeCommand("workbench.action.closeAuxiliaryBar");
+  }
+
+  async lowerNextWord() {
+    await vscode.commands.executeCommand("cursorWordRight");
+    await vscode.commands.executeCommand("editor.action.transformToLowercase");
+  }
+
+  async upperNextWord() {
+    await vscode.commands.executeCommand("cursorWordRight");
+    await vscode.commands.executeCommand("editor.action.transformToUppercase");
+  }
+
+  async titleNextWord() {
+    await vscode.commands.executeCommand("cursorWordRight");
+    await vscode.commands.executeCommand("editor.action.transformToTitlecase");
   }
 
   activate(context: vscode.ExtensionContext) {
@@ -46,11 +57,21 @@ export class Emacs {
     context.subscriptions.push(
       vscode.commands.registerCommand("emacs.cutAllRight", this.cutAllRight)
     );
+
     context.subscriptions.push(
-      vscode.commands.registerCommand(
-        "emacs.scrollLineToCenter",
-        this.scrollLineToCenter
-      )
+      vscode.commands.registerCommand("emacs.focusOnEditor", this.focusEditor)
+    );
+
+    context.subscriptions.push(
+      vscode.commands.registerCommand("emacs.alt-u", this.upperNextWord)
+    );
+
+    context.subscriptions.push(
+      vscode.commands.registerCommand("emacs.alt-l", this.lowerNextWord)
+    );
+
+    context.subscriptions.push(
+      vscode.commands.registerCommand("emacs.alt-c", this.titleNextWord)
     );
   }
 }
