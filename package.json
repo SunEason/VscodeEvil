@@ -16,6 +16,8 @@
   "contributes": {
     "keybindings": [
       { "key": "ctrl+k", "command": "-extension.vim_ctrl+k", "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl" },
+      { "key": "ctrl+n", "command": "extension.vim_ctrl+n", "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl && vim.mode != 'Insert'" },
+      { "key": "ctrl+p", "command": "extension.vim_ctrl+p", "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl && vim.mode != 'Insert'" },
       { "key": "ctrl+a", "command": "extension.vim_ctrl+a", "when": "editorTextFocus && vim.active && vim.use<C-a> && !inDebugRepl && vim.mode != 'Insert'" },
       { "key": "ctrl+e", "command": "extension.vim_ctrl+e", "when": "editorTextFocus && vim.active && vim.use<C-e> && !inDebugRepl && vim.mode != 'Insert'" },
       { "key": "ctrl+e", "command": "-extension.vim_ctrl+e", "when": "editorTextFocus && vim.active && vim.use<C-e> && !inDebugRepl && vim.mode == 'Insert'" },
