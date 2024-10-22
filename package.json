@@ -16,8 +16,6 @@
   "contributes": {
     "keybindings": [
       { "key": "ctrl+k", "command": "-extension.vim_ctrl+k", "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl" },
-      { "key": "ctrl+n", "command": "extension.vim_ctrl+n", "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl && vim.mode != 'Insert'" },
-      { "key": "ctrl+p", "command": "extension.vim_ctrl+p", "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl && vim.mode != 'Insert'" },
       { "key": "ctrl+a", "command": "extension.vim_ctrl+a", "when": "editorTextFocus && vim.active && vim.use<C-a> && !inDebugRepl && vim.mode != 'Insert'" },
       { "key": "ctrl+e", "command": "extension.vim_ctrl+e", "when": "editorTextFocus && vim.active && vim.use<C-e> && !inDebugRepl && vim.mode != 'Insert'" },
       { "key": "ctrl+e", "command": "-extension.vim_ctrl+e", "when": "editorTextFocus && vim.active && vim.use<C-e> && !inDebugRepl && vim.mode == 'Insert'" },
@@ -25,13 +23,7 @@
       { "key": "ctrl+w", "command": "extension.vim_ctrl+w", "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl && vim.mode != 'Insert'" },
       { "key": "ctrl+v", "command": "extension.vim_ctrl+v", "when": "editorTextFocus && vim.active && vim.use<C-v> && !inDebugRepl && vim.mode != 'Insert'" },
 
-      { "key": "ctrl+f", "command": "emacs.cursorRight" },
-      { "key": "ctrl+b", "command": "emacs.cursorLeft" },
-      { "key": "alt+f", "command": "emacs.cursorWordRight" },
-      { "key": "alt+b", "command": "emacs.cursorWordLeft" },
-
       { "key": "ctrl+p", "command": "" },
-      { "key": "ctrl+p", "command": "editor.action.marker.prev", "when": "editorTextFocus && vim.active && vim.mode != 'Insert'" },
       { "key": "ctrl+p", "command": "emacs.cursorUp", "when": "editorTextFocus && !suggestWidgetVisible && !inQuickOpen && vim.mode != 'Normal'" },
       { "key": "ctrl+p", "command": "selectPrevSuggestion", "when": "editorTextFocus && suggestWidgetVisible" },
       { "key": "ctrl+p", "command": "showPrevParameterHint", "when": "editorTextFocus && parameterHintsVisible" },
@@ -40,7 +32,6 @@
       { "key": "ctrl+p", "command": "workbench.action.quickOpenNavigatePrevious", "when": "!editorFocus && !inQuickOpen" },
 
       { "key": "ctrl+n", "command": "" },
-      { "key": "ctrl+n", "command": "editor.action.marker.next", "when": "editorTextFocus && vim.active && vim.mode != 'Insert'" },
       { "key": "ctrl+n", "command": "emacs.cursorDown", "when": "editorTextFocus && !suggestWidgetVisible && !inQuickOpen && vim.mode != 'Normal'" },
       { "key": "ctrl+n", "command": "selectNextSuggestion", "when": "editorTextFocus && suggestWidgetVisible" },
       { "key": "ctrl+n", "command": "showNextParameterHint", "when": "editorTextFocus && parameterHintsVisible" },
@@ -48,18 +39,21 @@
       { "key": "ctrl+n", "command": "workbench.action.quickOpenNavigateNext", "when": "inQuickOpen" },
       { "key": "ctrl+n", "command": "workbench.action.quickOpenNavigateNext", "when": "!editorFocus && !inQuickOpen" },
 
+      { "key": "ctrl+f", "command": "emacs.cursorRight" },
+      { "key": "ctrl+b", "command": "emacs.cursorLeft" },
+      { "key": "alt+f", "command": "emacs.cursorWordRight" },
+      { "key": "alt+b", "command": "emacs.cursorWordLeft" },
+
       { "key": "ctrl+a", "command": "" },
       { "key": "ctrl+a", "command": "emacs.cursorHome", "when": "editorTextFocus &&  vim.mode == 'Insert'" },
+      { "key": "ctrl+e", "command": "" },
       { "key": "ctrl+e", "command": "emacs.cursorEnd", "when": "editorTextFocus &&  vim.mode == 'Insert'" },
 
       { "key": "ctrl+h", "command": "deleteLeft", "when": "editorTextFocus && vim.mode == 'Insert'" },
       { "key": "ctrl+d", "command": "deleteRight", "when": "editorTextFocus && !editorHasSelection && vim.mode == 'Insert'" },
-      { "key": "ctrl+k", "command": "emacs.cutAllRight", "when": "editorTextFocus &&  vim.mode == 'Insert'" },
+      { "key": "ctrl+k", "command": "emacs.cutAllRight", "when": "editorTextFocus &&  vim.mode == 'Insert' || terminalFocus" },
       { "key": "alt+d", "command": "deleteWordRight", "when": "editorTextFocus" },
       { "key": "alt+h", "command": "deleteWordLeft", "when": "editorTextFocus" },
-
-      { "key": "ctrl+[", "command": "extension.vim_escape", "when": "editorTextFocus && vim.active" },
-      { "key": "ctrl+shift+c", "command": "editor.action.clipboardCopyAction" },
 
       { "key": "ctrl+g", "command": "cancelSelection", "when": "editorFocus && editorHasSelection" },
       { "key": "ctrl+g", "command": "toggleVim", "when": "editorTextFocus && !vim.active" },
@@ -80,7 +74,6 @@
       { "key": "ctrl+g", "command": "workbench.action.closeQuickOpen", "when": "inQuickOpen" },
       { "key": "ctrl+g", "command": "list.closeFind", "when": "listFocus && treeFindOpen" },
 
-      { "key": "ctrl+alt+n", "command": "editor.action.addSelectionToNextFindMatch", "when": "editorFocus" },
       { "key": "ctrl+x d", "command": "workbench.action.files.openFolder", "when": "openFolderWorkspaceSupport" },
       { "key": "ctrl+x r", "command": "workbench.action.openRecent" }, 
       { "key": "ctrl+x z", "command": "workbench.action.toggleZenMode" },
@@ -93,7 +86,6 @@
       { "key": "ctrl+x k", "command": "workbench.action.closeActiveEditor" }, 
       { "key": "ctrl+x ctrl+k", "command": "workbench.action.closeAllEditors" },
       { "key": "alt+x", "command": "workbench.action.showCommands" },
-      { "key": "alt+z", "command": "emacs.focusOnEditor"},
       { "key": "alt+- alt+u", "command": "editor.action.transformToUppercase" },
       { "key": "alt+- alt+l", "command": "editor.action.transformToLowercase" },
       { "key": "alt+- alt+c", "command": "editor.action.transformToTitlecase" },
@@ -110,9 +102,15 @@
       { "key": "shift+a", "command": "explorer.newFolder", "when": "filesExplorerFocus && !inputFocus" },
       { "key": "shift+r", "command": "renameFile", "when": "filesExplorerFocus && !inputFocus" },
 
+      { "key": "ctrl+alt+n", "command": "editor.action.addSelectionToNextFindMatch", "when": "editorFocus" },
+      { "key": "ctrl+shift+c", "command": "editor.action.clipboardCopyAction" },
+      { "key": "ctrl+shift+k", "command": "emacs.focusOnEditor"},
+      { "key": "ctrl+shift+j", "command": "editor.action.marker.prev", "when": "editorTextFocus && vim.active && vim.mode == 'Normal'" },
+      { "key": "ctrl+j", "command": "editor.action.marker.next", "when": "editorTextFocus && vim.active && vim.mode == 'Normal'" },
+      { "key": "ctrl+[", "command": "extension.vim_escape", "when": "editorTextFocus && vim.active" },
       { "key": "ctrl+c ctrl+v", "command": "workbench.action.openView", "when": "!terminalFocus"},
-      { "key": "ctrl+c ctrl+f", "command": "workbench.action.quickTextSearch", "when": "editorFocus" },
-      { "key": "ctrl+c ctrl+s", "command": "workbench.action.gotoSymbol", "when": "editorFocus" }
+      { "key": "ctrl+c ctrl+f", "command": "workbench.action.quickTextSearch", "when": "!terminalFocus" },
+      { "key": "ctrl+c ctrl+s", "command": "workbench.action.gotoSymbol", "when": "!terminalFocus" }
     ]
   },
   "scripts": {
