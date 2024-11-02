@@ -10,8 +10,17 @@
     "Keymaps"
   ],
   "activationEvents": [
-  "onStartupFinished"
+    "onStartupFinished"
   ],
+  "license": "MIT",
+  "author": {
+    "name": "Eason Sun",
+    "url": "https://github.com/SunEason"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SunEason/VscodeEvil"
+  },
  	"extensionDependencies": [
 		"vscodevim.vim",
     "bodil.file-browser"
