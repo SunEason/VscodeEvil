@@ -21,10 +21,10 @@
     "type": "git",
     "url": "https://github.com/SunEason/VscodeEvil"
   },
- 	"extensionDependencies": [
-		"vscodevim.vim",
+  "extensionDependencies": [
+    "vscodevim.vim",
     "bodil.file-browser"
-	],
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "keybindings": [

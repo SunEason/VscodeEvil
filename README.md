@@ -1,56 +1,46 @@
 # evil-mode README
 
-<h2 align="center"><img src="https://raw.githubusercontent.com/migrs/vscode-vimacs/master/images/icon.png" height="128"><br>VSCode Vimacs</h2>
-<p align="center"><strong>Emacs keybindings for VSCodeVim</strong></p>
+## extensionDependencies
 
-## Concepts
-
-- a fork of https://github.com/migrs/vscode-vimacs
-- Mainly using [VSCodeVim](https://github.com/VSCodeVim/Vim), you can also use Emacs like key bindings in Vim insert mode
-- Supports Emacs region select key bindings
-
-## Related extensions
-
-- [VSCodeVim](https://github.com/VSCodeVim/Vim) (**Required**) - Vim emulation for Visual Studio Code
-- [vscode-emacs-region](https://github.com/ayrtonmassey/vscode-emacs-region) - provides region selection similar to that of Emacs
-- [DDCODE](https://github.com/dotDeeka/ddcode) - provides some Emacs commands
+Vim , File Browser
 
 ### Emacs keybindings
 
-| key            | command                                 |
-| -------------- | --------------------------------------- |
-| alt+w          | `editor.action.clipboardCopyAction`     |
-| ctrl+w         | `editor.action.clipboardCutAction`      |
-| ctrl+y         | `editor.action.clipboardPasteAction`    |
-| ctrl+s         | `editor.action.nextMatchFindAction`     |
-| ctrl+r         | `editor.action.previousMatchFindAction` |
-| ctrl+f         | `cursorRight`                           |
-| ctrl+b         | `cursorLeft`                            |
-| ctrl+p         | `cursorUp`                              |
-| ctrl+n         | `cursorDown`                            |
-| alt+f          | `cursorWordRight`                       |
-| alt+b          | `cursorWordLeft`                        |
-| ctrl+a         | `cursorHome`                            |
-| ctrl+e         | `cursorEnd`                             |
-| ctrl+d         | `deleteRight`                           |
-| ctrl+h         | `deleteLeft`                            |
-| alt+d          | `deleteWordRight`                       |
-| alt+h          | `deleteWordLeft`                        |
-| **ctrl+space** | `emacs.startRegionMode`                 |
-| **ctrl+g**     | `emacs.exitRegionMode`                  |
-| **ctrl+k**     | `emacs.cutAllRight`                     |
-| **ctrl+l**     | `emacs.scrollLineToCenter`              |
-| **C-x b**      | `Switch to another open buffer`         |
-| **C-x C-f**    | `QuickOpen a file`                      |
-| **C-x k**      | `Close current tab (buffer)`            |
-| **C-x C-k**    | `Close all tabs`                        |
-| **C-x C-s**    | `Save`                                  |
-| **C-x C-w**    | `Save as`                               |
-| **C-x z**      | `zen mode`                              |
-| **C-x r**      | `recent project`                        |
-| **C-M-n**      | `Add selection to next find match`      |
-| **M-x**        | `Open command palette`                  |
-| **M-z**        | `Close all side bar and panel`          |
+| key              | command                                 |
+| ---------------- | --------------------------------------- |
+| alt+w            | `editor.action.clipboardCopyAction`     |
+| ctrl+w           | `editor.action.clipboardCutAction`      |
+| ctrl+y           | `editor.action.clipboardPasteAction`    |
+| ctrl+s           | `editor.action.nextMatchFindAction`     |
+| ctrl+r           | `editor.action.previousMatchFindAction` |
+| ctrl+f           | `cursorRight`                           |
+| ctrl+b           | `cursorLeft`                            |
+| alt+f            | `cursorWordRight`                       |
+| alt+b            | `cursorWordLeft`                        |
+| ctrl+a           | `cursorHome`                            |
+| ctrl+e           | `cursorEnd`                             |
+| ctrl+d           | `deleteRight`                           |
+| ctrl+h           | `deleteLeft`                            |
+| alt+d            | `deleteWordRight`                       |
+| alt+h            | `deleteWordLeft`                        |
+| **ctrl+g**       | `emacs.exitRegionMode`                  |
+| **ctrl+k**       | `emacs.cutAllRight`                     |
+| **ctrl+l**       | `emacs.scrollLineToCenter`              |
+| **C-x d**        | `file-browser open`                     |
+| **C-x b**        | `Switch to another open buffer`         |
+| **C-x C-f**      | `QuickOpen a file`                      |
+| **C-x k**        | `Close current tab (buffer)`            |
+| **C-x C-k**      | `Close all tabs`                        |
+| **C-x s**        | `Save`                                  |
+| **C-x C-s**      | `Save all`                              |
+| **C-x C-w**      | `Save as`                               |
+| **C-x z**        | `zen mode`                              |
+| **C-x r**        | `recent project`                        |
+| **C-M-n**        | `Add selection to next find match`      |
+| **M-x**          | `Open command palette`                  |
+| **ctrl+j**       | `editor.action.marker.next`             |
+| **ctrl+shift+j** | `editor.action.marker.prev`             |
+| **ctrl+shift+k** | `Close all side bar and panel`          |
 
 ## Suggested Custom Keybindings
 
@@ -67,43 +57,57 @@
 
 | key     | command       |
 | ------- | ------------- |
+| /       | `list.find`   |
 | a       | `new file`    |
+| p       | `paste file`  |
+| d d     | `cut`         |
+| y y     | `copy`        |
+| shift+d | `delete file` |
 | shift+a | `new folder`  |
 | shift+r | `rename file` |
-| shift+d | `delete file` |
-| shift+c | `copy`        |
-| shift+x | `cut`         |
 
 ## My settings.json
 
 ```json
-    "vim.overrideCopy": true,
-    "vim.hlsearch": true,
-    "vim.useSystemClipboard": false,
-    "vim.visualstar": true,
-    "vim.cursorStylePerMode.normal" : "block",
-    "vim.cursorStylePerMode.insert": "line-thin",
-    "vim.cursorStylePerMode.replace": "block-outline",
-    "vim.statusBarColorControl": true,
-```
-
-## Compatibility With Other Extensions
-
-It is possible to combine this extension with other cursor movement extensions.
-
-You can use the `inRegionMode` context flag in the `when` clause of your `keybindings.json` to provide different behaviours for region mode and cursor mode. The default key bindings are laid out as follows:
-
-```json
-{
-    "key": "DESIRED KEY",
-    "command": "CURSOR MOVE COMMAND",
-    "when": "editorTextFocus && !inRegionMode"
-},
-{
-    "key": "DESIRED KEY",
-    "command": "CURSOR MOVE & SELECT COMMAND",
-    "when": "editorTextFocus && inRegionMode"
-}
+  //vim
+  "vim.easymotion": false,
+  "vim.sneak": false,
+  "vim.camelCaseMotion.enable": true,
+  "vim.replaceWithRegister": true,
+  // "vim.foldfix": true, // 折叠时自动展开,为true是11j会一行一行的向下执行
+  "vim.enableNeovim": true,
+  "vim.leader": "<space>",
+  "vim.incsearch": true,
+  "vim.hlsearch": true,
+  "vim.overrideCopy": true,
+  "vim.useSystemClipboard": false,
+  "vim.visualstar": true,
+  "vim.useCtrlKeys": true,
+  "vim.handleKeys": {
+    "<C-n>": false,
+    "<C-p>": false
+  },
+  "vim.autoSwitchInputMethod.enable": true,
+  // "vim.autoSwitchInputMethod.defaultIM": "1033",
+  // "vim.autoSwitchInputMethod.obtainIMCmd": "D:\\im-select.exe",
+  // "vim.autoSwitchInputMethod.switchIMCmd": "D:\\im-select.exe {im}",
+  "vim.autoSwitchInputMethod.defaultIM": "1",
+  "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/bin/fcitx5-remote",
+  "vim.autoSwitchInputMethod.switchIMCmd": "/usr/bin/fcitx5-remote -t {im}",
+  // prettier-ignore
+  "vim.normalModeKeyBindingsNonRecursive": [
+    { "before": ["]", "b"], "after": ["g", "t"] },
+    { "before": ["[", "b"], "after": ["g", "T"] },
+    { "before": ["Y"], "after": ["y", "$" ] }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    { "before": ["Y"], "after": ["\"", "+", "y"] }
+  ],
+  // To 18 improve performance
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  //vim ^
 ```
 
 ## License
